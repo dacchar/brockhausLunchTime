@@ -1,0 +1,38 @@
+<h1>Brockhaus</h1>
+
+<table class="table">
+    <caption>Lunch time</caption>
+     <thead class="thead-light">
+        <tr>
+            <th>Id</th>
+            <th>Orderer name</th>
+            <th>Buyer name</th>
+            <th>Description</th> 
+            <th>Price</th>
+            <th>Paid?</th>
+            <th>Date/Time</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @for (order of orders; track order) {
+            <tr>
+                <td>{{order.id}}</td>
+                <td>{{order.ordererName}}</td>
+                <td>{{order.buyerName}}</td>
+                <td>{{order.dish}}</td>
+                <td>{{order.price}}</td>
+                <td>{{order.paid}}</td>
+                <td>{{order.time | date}}</td>
+                <td><button (click)="updateOrder(order.id)" class="btn btn-success">Update order</button></td>
+                <td><button (click)="deleteOrder(order.id)" class="btn btn-warning">Delete order</button></td>
+
+            </tr>            
+        }
+    </tbody>
+
+</table>
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <td><button (click)="addOrder()" class="btn btn-success">Add order</button></td>
+</div>

@@ -1,0 +1,35 @@
+<h1>Debts</h1>
+
+<form (ngSubmit)="filterDebts()" #filterForm="ngForm">
+    <fieldset class="form-group">
+        <label>Buyer name</label>
+        <input type="text" [(ngModel)]="filter.buyerName" #buyerName="ngModel" class="form-control" name="Buyer name">
+    </fieldset>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="submit" class="btn btn-success">Filter</button>
+    </div>
+</form>
+
+<table class="table">
+    @if(debts.length === 0) {
+        <caption>The debts list is empty.</caption>
+    } @else {
+        <caption>Debts list</caption>
+    }
+     <thead class="thead-light">
+        <tr>
+            <th>Orderer name</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @for (debt of debts; track debt) {
+            <tr>
+                <td>{{debt.ordererName}}</td>
+                <td>{{debt.amount}}</td>
+            </tr>            
+        }
+    </tbody>
+</table>

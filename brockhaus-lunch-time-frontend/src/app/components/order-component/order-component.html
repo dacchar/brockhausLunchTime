@@ -1,0 +1,75 @@
+<H1>Order</H1>
+
+<div class="container">
+
+    @if(orderForm.dirty && orderForm.invalid) {
+        <div class="alert alert-warning">Enter valid values!</div>
+    }
+
+    @if(orderForm.dirty && ordererName.invalid) {
+        <div class="alert alert-warning">Enter valid orderer name at least 2 characters!</div>
+    } 
+
+    @if(orderForm.dirty && buyerName.invalid) {
+        <div class="alert alert-warning">Enter valid buyer name at least 2 characters!</div>
+    } 
+
+    @if(orderForm.dirty && dish.invalid) {
+        <div class="alert alert-warning">Enter valid dish at least 2 characters!</div>
+    } 
+
+    @if(orderForm.dirty && time.invalid) {
+        <div class="alert alert-warning">Enter valid target date!</div>
+    } 
+
+    <form (ngSubmit)="!orderForm.invalid && saveOrder()" #orderForm="ngForm">
+
+        <fieldset class="form-group">
+            <label>Orderer name</label>
+            <input type="text" [(ngModel)]="order.ordererName" 
+            #ordererName="ngModel"
+            class="form-control" name="ordererName" required="required" minlength="2">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Buyer name</label>
+            <input type="text" [(ngModel)]="order.buyerName" 
+            #buyerName="ngModel"
+            class="form-control" name="buyerName" required="required" minlength="2">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Dish</label>
+            <input type="text" [(ngModel)]="order.dish" 
+            #dish="ngModel"
+            class="form-control" name="dish" required="required" minlength="2">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Price</label>
+            <input type="text" [(ngModel)]="order.price" 
+            #price="ngModel"
+            class="form-control" name="price" required="required">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Paid?</label>
+            <input #paid type="checkbox" name="paid" [(ngModel)]="order.paid" />
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Target date</label>
+            <input type="datetime-local"
+                [ngModel]="order.time| date:'yyyy-MM-dd HH:mm'"
+                #time="ngModel"
+                (ngModelChange)="order.time = $event"
+                class="form-control" name="targetDate" required="required"/>
+        </fieldset>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-success">Save</button>
+            <button type="button" class="btn btn-warning" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+
+</div>
