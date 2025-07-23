@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "brockhaus-lunch-time-frontend": {
+    "brockhaus-lunch-time": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -15,7 +15,8 @@
           "options": {
             "browser": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -25,6 +26,7 @@
               }
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ]
           },
@@ -56,10 +58,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "brockhaus-lunch-time-frontend:build:production"
+              "buildTarget": "brockhaus-lunch-time:build:production"
             },
             "development": {
-              "buildTarget": "brockhaus-lunch-time-frontend:build:development"
+              "buildTarget": "brockhaus-lunch-time:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +74,8 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/testing",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
