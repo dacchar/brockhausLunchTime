@@ -20,8 +20,8 @@ export class OrderComponent {
   private router = inject(Router);
   
   ngOnInit(): void {
-    this.id = parseInt(this.route.snapshot.params['id'])
-    if(this.id != -1) {
+    if(this.route.snapshot.routeConfig!.path !== 'orders/add'){
+      this.id = parseInt(this.route.snapshot.params['id'])
       this.orderService.retrieveOrder(this.id).subscribe(
         data => this.order = data
       )
@@ -29,8 +29,7 @@ export class OrderComponent {
   }
 
   saveOrder(): void {
-    if(this.id === -1) {
-      this.order.id = -1;
+    if(this.route.snapshot.routeConfig!.path === 'orders/add'){
       this.orderService.createOrder(this.order).subscribe(
         data => { 
           this.router.navigate(["orders"]);

@@ -6,5 +6,6 @@ import { DashboardComponent } from './components/dashboard-component/dashboard-c
 export const routes: Routes = [
     { path:'', component: DashboardComponent},
     { path:'orders', component: DashboardComponent  },
+    { path:'orders/add', component: OrderComponent  },
     { path:'orders/:id', component: OrderComponent },
 ];

@@ -26,12 +26,12 @@
                     <div class="card-text">
                         <hr />
                         <div class="fw-light">Ordered by {{order.ordererName}}</div>
-                        <div class="fw-light">Purchased by {{order.buyerName}}</div>
+                        <div class="fw-light">Bought by {{order.buyerName}}</div>
 
                         <hr />
                     </div>
                     <div>
-                        <i class="bi bi-cash-stack"></i> {{order.price}}$
+                        <i class="bi bi-cash-stack"></i> {{order.price}} <i class="bi bi-currency-euro"></i>
 
                         @if(order.paid) {
                             <span class="float-end badge bg-success">Paid</span>

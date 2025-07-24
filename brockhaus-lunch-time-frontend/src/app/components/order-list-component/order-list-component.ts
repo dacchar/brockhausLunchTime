@@ -27,11 +27,11 @@ export class OrderListComponent implements OnInit {
   }
 
   updateOrder(id: number): void {
-    this.router.navigate(['orders', id])
+    this.router.navigate(['orders', id]);
   }
 
   addOrder(): void {
-    this.router.navigate(['orders', -1])
+    this.router.navigate(['orders/add']);
   }
 
   deleteOrder(id: number): void {

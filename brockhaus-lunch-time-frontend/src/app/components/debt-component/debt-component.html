@@ -16,14 +16,14 @@
     <div class="col-12">
 
         @if(debts.length === 0) {
-        <span>All debts are settled.</span>
+            <span>All debts are settled.</span>
         } @else {
         <div class="card">
             <ul class=" list-group list-group-flush">
                 @for (debt of debts; track debt.ordererName) {
                 <li class="list-group-item">
                     <span><i class="bi bi-person-fill"></i> {{debt.ordererName}}</span>
-                    <span class="float-end text-danger"> - {{debt.amount}}<i class="bi bi-currency-dollar"></i></span>
+                    <span class="float-end text-danger"> - {{debt.amount}}<i class="bi bi-currency-euro"></i></span>
                 </li>
                 }
             </ul>
