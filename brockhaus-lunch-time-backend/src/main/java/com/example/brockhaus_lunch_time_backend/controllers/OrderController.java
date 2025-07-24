@@ -17,12 +17,12 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v2")
-public class OrderJpaController {
+public class OrderController {
     private OrderService orderService;
     private ModelMapper modelMapper;
 
     @Autowired
-    public OrderJpaController(OrderService orderService, ModelMapper modelMapper) {
+    public OrderController(OrderService orderService, ModelMapper modelMapper) {
         this.orderService = orderService;
         this.modelMapper = modelMapper;
     }
