@@ -16,15 +16,15 @@ export class OrderApiService {
     }
 
     retrieveOrder(id: number): Observable<Order> {
-      return of(new Order(0, '', '', '', 0, false, new Date()));
+      return of(new Order(0, '', '', '', 0, false, '', new Date()));
     }
 
     createOrder(order: Order): Observable<Order> {
-      return of(new Order(0, '', '', '', 0, false, new Date()));
+      return of(new Order(0, '', '', '', 0, false, '', new Date()));
   }
 
   updateOrder(id: number, todo: Order): Observable<Order> {
-    return of(new Order(0, '', '', '', 0, false, new Date()));
+    return of(new Order(0, '', '', '', 0, false, '', new Date()));
   }
 
   deleteOrder(id: number): Observable<number> {

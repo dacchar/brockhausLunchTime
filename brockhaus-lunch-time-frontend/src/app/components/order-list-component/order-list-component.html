@@ -1,38 +1,56 @@
-<h1>Brockhaus</h1>
+<div class="container">
+    <div class="row">
+        <h2 class="col-8">Overview orders</h2>
+        <div class="col-4">    
+            <div class="d-flex justify-content-md-end ">
+            <button (click)="addOrder()" class="btn btn-secondary"><i class="bi bi-plus-lg"></i> Add order</button>
+        </div>
+    </div>
 
-<table class="table">
-    <caption>Lunch time</caption>
-     <thead class="thead-light">
-        <tr>
-            <th>Id</th>
-            <th>Orderer name</th>
-            <th>Buyer name</th>
-            <th>Description</th> 
-            <th>Price</th>
-            <th>Paid?</th>
-            <th>Date/Time</th>
-        </tr>
-    </thead>
-
-    <tbody>
+    </div>
+    <div class="row g-3">
         @for (order of orders; track order) {
-            <tr>
-                <td>{{order.id}}</td>
-                <td>{{order.ordererName}}</td>
-                <td>{{order.buyerName}}</td>
-                <td>{{order.dish}}</td>
-                <td>{{order.price}}</td>
-                <td>{{order.paid}}</td>
-                <td>{{order.time | date}}</td>
-                <td><button (click)="updateOrder(order.id)" class="btn btn-success">Update order</button></td>
-                <td><button (click)="deleteOrder(order.id)" class="btn btn-warning">Delete order</button></td>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{order.dish}}
+                        <div class="float-end">
+                            <button (click)="updateOrder(order.id)" class="btn btn-light btn-sm"><i
+                                    class="bi bi-pen"></i>
+                            </button>
+                            <button (click)="deleteOrder(order.id)" class="btn btn-light btn-sm ms-2"><i
+                                    class="bi bi-trash"></i> </button>
+                        </div>
+                    </h5>
+                    <div class="card-text">
+                        <hr />
+                        <div class="fw-light">Ordered by {{order.ordererName}}</div>
+                        <div class="fw-light">Purchased by {{order.buyerName}}</div>
 
-            </tr>            
+                        <hr />
+                    </div>
+                    <div>
+                        <i class="bi bi-cash-stack"></i> {{order.price}}$
+
+                        @if(order.paid) {
+                            <span class="float-end badge bg-success">Paid</span>
+                        } 
+                        @else {
+                            <span class="float-end badge bg-danger">Outstanding</span>
+                        }
+                
+                    </div>
+                    <div><i class="bi bi-calendar-date"></i> {{order.time | date}}</div>
+                    <div class="d-flex justify-content-center mt-3">
+                        <img alt="error" style="width: 20px" src="https://www.paypalobjects.com/devdoc/NewHomepage/svg/ppcp-paypal.svg" />
+                        <a href="{{order.paypal}}" class="btn btn-sm btn-link">PayPal</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
         }
-    </tbody>
+    </div>
 
-</table>
-
-<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <td><button (click)="addOrder()" class="btn btn-success">Add order</button></td>
 </div>

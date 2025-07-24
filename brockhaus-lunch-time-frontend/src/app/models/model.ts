@@ -5,6 +5,7 @@ export type IOrder = {
   dish: string;
   price: Number;
   paid: Boolean;
+  paypal: string;
   time: Date;
 };
 
@@ -16,6 +17,7 @@ export class Order {
     public dish: string,
     public price: Number,
     public paid: Boolean,
+    public paypal: string,
     public time: Date
   ){
   }

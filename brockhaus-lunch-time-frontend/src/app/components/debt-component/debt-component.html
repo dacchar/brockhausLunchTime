@@ -1,35 +1,36 @@
-<h1>Debts</h1>
+<div class="container">
+<div class="row">
+    <h2 class="col-12">Debts</h2>
+</div>
+<div class="row g-3">
+    <div class="col-12">
+        <div class="input-group ">
+            <input type="text" class="form-control" [(ngModel)]="filter.buyerName" placeholder="Buyer's name">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" (click)="filterDebts()" type="button"><i
+                        class="bi bi-send"></i></button>
+            </div>
+        </div>
 
-<form (ngSubmit)="filterDebts()" #filterForm="ngForm">
-    <fieldset class="form-group">
-        <label>Buyer name</label>
-        <input type="text" [(ngModel)]="filter.buyerName" #buyerName="ngModel" class="form-control" name="Buyer name">
-    </fieldset>
-
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button type="submit" class="btn btn-success">Filter</button>
     </div>
-</form>
+    <div class="col-12">
 
-<table class="table">
-    @if(debts.length === 0) {
-        <caption>The debts list is empty.</caption>
-    } @else {
-        <caption>Debts list</caption>
-    }
-     <thead class="thead-light">
-        <tr>
-            <th>Orderer name</th>
-            <th>Amount</th>
-        </tr>
-    </thead>
+        @if(debts.length === 0) {
+        <span>All debts are settled.</span>
+        } @else {
+        <div class="card">
+            <ul class=" list-group list-group-flush">
+                @for (debt of debts; track debt.ordererName) {
+                <li class="list-group-item">
+                    <span><i class="bi bi-person-fill"></i> {{debt.ordererName}}</span>
+                    <span class="float-end text-danger"> - {{debt.amount}}<i class="bi bi-currency-dollar"></i></span>
+                </li>
+                }
+            </ul>
+        </div>
 
-    <tbody>
-        @for (debt of debts; track debt) {
-            <tr>
-                <td>{{debt.ordererName}}</td>
-                <td>{{debt.amount}}</td>
-            </tr>            
         }
-    </tbody>
-</table>
+
+    </div>
+</div>
+</div>

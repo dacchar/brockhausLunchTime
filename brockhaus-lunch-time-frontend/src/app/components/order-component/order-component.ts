@@ -13,7 +13,7 @@ import { DatePipe } from '@angular/common';
 })
 export class OrderComponent {
   protected id!: number;
-  protected order: Order = new Order(this.id, '', '', '', 0, false, new Date());
+  protected order: Order = new Order(this.id, '', '', '', 0, false, '', new Date());
 
   private orderService = inject(OrderService);
   private route = inject(ActivatedRoute);
@@ -22,8 +22,6 @@ export class OrderComponent {
   ngOnInit(): void {
     this.id = parseInt(this.route.snapshot.params['id'])
     if(this.id != -1) {
-      // this.order = this.orderService.retrieveOrder(this.id)!;
-
       this.orderService.retrieveOrder(this.id).subscribe(
         data => this.order = data
       )
