@@ -47,10 +47,10 @@ public class OrderService {
         return getAllOrders()
                 .stream()
                 .filter(e -> !e.getPaid())
-                .collect(groupingBy(DishOrder::getBuyerName, Collectors.summarizingDouble(DishOrder::getPrice)))
+                .filter(e -> e.getBuyerName().equals(buyerName))
+                .collect(groupingBy(DishOrder::getOrdererName, Collectors.summarizingDouble(DishOrder::getPrice)))
                 .entrySet()
                 .stream()
-                .filter(e -> e.getKey().equals(buyerName))
                 .map(e -> new DebtDto(e.getKey(), e.getValue().getSum()))
                 .toList();
     }
