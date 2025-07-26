@@ -35,7 +35,7 @@ public class OrderService {
     }
 
     public void deleteOrder(long id) {
-        orderJpaRepository.existsById(id);
+       orderJpaRepository.deleteById(id);
     }
 
     public DishOrder createOrder(DishOrder dishOrder) {
