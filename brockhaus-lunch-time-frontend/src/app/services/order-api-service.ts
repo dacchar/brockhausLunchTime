@@ -12,27 +12,33 @@ export class OrderApiService {
     private http = inject(HttpClient);
  
     retrieveOrders(): Observable<Order[]> {
-      return of([]);
+      const path = `${API_URL}/orders`
+      return this.http.get<[Order]>(path);
     }
 
     retrieveOrder(id: number): Observable<Order> {
-      return of(new Order(0, '', '', '', 0, false, '', new Date()));
+      let path = `${API_URL}/orders/${id}`
+      return this.http.get<Order>(path);
     }
 
     createOrder(order: Order): Observable<Order> {
-      return of(new Order(0, '', '', '', 0, false, '', new Date()));
+      const path = `${API_URL}/orders`;
+      return this.http.post<Order>(path, order);
   }
 
   updateOrder(id: number, todo: Order): Observable<Order> {
-    return of(new Order(0, '', '', '', 0, false, '', new Date()));
+    let path = `${API_URL}/orders/${id}`
+    return this.http.put<Order>(path, todo);
   }
 
   deleteOrder(id: number): Observable<number> {
-    return of(0);
+    let path = `${API_URL}/orders/${id}`
+    return this.http.delete<number>(path);
   }
 
   retrieveDebts(buyerName: string): Observable<Debt[]> {
-    return of([]);
+    let path = `${API_URL}/debts/${buyerName}`
+    return this.http.get<Debt[]>(path);
   }
   
 }
