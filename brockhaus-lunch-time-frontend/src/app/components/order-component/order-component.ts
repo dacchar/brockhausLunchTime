@@ -3,11 +3,11 @@ import { OrderService } from '../../services/order-service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Order } from '../../models/model';
 import { FormsModule } from '@angular/forms';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-order-component',
-  imports: [FormsModule, DatePipe],
+  imports: [FormsModule, DatePipe, CommonModule],
   templateUrl: './order-component.html',
   styleUrl: './order-component.css'
 })

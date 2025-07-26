@@ -1,81 +1,82 @@
-<H1>Order</H1>
-
 <div class="container">
 
-    @if(orderForm.dirty && orderForm.invalid) {
-        <div class="alert alert-warning">Enter valid values!</div>
-    }
-
-    @if(orderForm.dirty && ordererName.invalid) {
-        <div class="alert alert-warning">Enter valid orderer name at least 2 characters!</div>
-    } 
-
-    @if(orderForm.dirty && buyerName.invalid) {
-        <div class="alert alert-warning">Enter valid buyer name at least 2 characters!</div>
-    } 
-
-    @if(orderForm.dirty && dish.invalid) {
-        <div class="alert alert-warning">Enter valid dish at least 2 characters!</div>
-    } 
-
-    @if(orderForm.dirty && time.invalid) {
-        <div class="alert alert-warning">Enter valid target date!</div>
-    } 
+    <h1>Order</h1>
 
     <form (ngSubmit)="!orderForm.invalid && saveOrder()" #orderForm="ngForm">
 
-        <fieldset class="form-group">
-            <label>Orderer name</label>
-            <input type="text" [(ngModel)]="order.ordererName" 
-            #ordererName="ngModel"
-            class="form-control" name="ordererName" required="required" minlength="2">
+        <fieldset class="form-floating mb-4">
+
+            <input type="text" [(ngModel)]="order.ordererName" #ordererName="ngModel" placeholder="placeholder"
+                class="form-control" id="ordererName" name="ordererName" required="required" minlength="2"
+                [ngClass]="{ 'is-valid': ordererName.valid, 'is-invalid': orderForm.dirty && ordererName.invalid}">
+            <label for="ordererName">Orderer name</label>
+            <div class="invalid-tooltip">
+                Please enter a valid orderer name with at least 2 characters.
+            </div>
+
         </fieldset>
 
-        <fieldset class="form-group">
-            <label>Buyer name</label>
-            <input type="text" [(ngModel)]="order.buyerName" 
-            #buyerName="ngModel"
-            class="form-control" name="buyerName" required="required" minlength="2">
+        <fieldset class="form-floating mb-4">
+
+            <input type="text" [(ngModel)]="order.buyerName" #buyerName="ngModel" placeholder="placeholder"
+                class="form-control" id="buyerName" name="buyerName" required="required" minlength="2"
+                [ngClass]="{ 'is-valid': buyerName.valid, 'is-invalid': orderForm.dirty && buyerName.invalid}">
+            <label for="buyerName">Buyer name</label>
+
+            <div class="invalid-tooltip">
+                Please enter a valid buyer name with at least 2 characters.
+            </div>
+
         </fieldset>
 
-        <fieldset class="form-group">
-            <label>Dish</label>
-            <input type="text" [(ngModel)]="order.dish" 
-            #dish="ngModel"
-            class="form-control" name="dish" required="required" minlength="2">
+        <fieldset class="form-floating mb-4">
+            <input type="text" [(ngModel)]="order.dish" #dish="ngModel" placeholder="placeholder" class="form-control"
+                id="dishName" name="dish" required="required" minlength="2"
+                [ngClass]="{ 'is-valid': dish.valid, 'is-invalid': orderForm.dirty && dish.invalid}">
+            <label for="dishName">Dish</label>
+
+            <div class="invalid-tooltip">
+                Please enter a valid dish name with at least 2 characters.
+            </div>
+
         </fieldset>
 
-        <fieldset class="form-group">
-            <label>Price</label>
-            <input type="text" [(ngModel)]="order.price" 
-            #price="ngModel"
-            class="form-control" name="price" required="required">
+        <fieldset class="form-floating mb-4">
+            <input type="text" [(ngModel)]="order.price" #price="ngModel" placeholder="placeholder" class="form-control"
+                name="price" required="required" [ngClass]="{ 'is-valid': orderForm.dirty }">
+            <label for="price">Price</label>
         </fieldset>
 
-        <fieldset class="form-group">
-            <label>PayPal</label>
-            <input type="text" [(ngModel)]="order.paypal"
-            #price="ngModel"
-            class="form-control" name="paypal">
+        <fieldset class="form-floating mb-4">
+            <input type="text" [(ngModel)]="order.paypal" #price="ngModel" placeholder="placeholder"
+                class="form-control" [ngClass]="{ 'is-valid': orderForm.dirty }" name="paypal">
+            <label for="paypal">PayPal</label>
         </fieldset>
 
-        <fieldset class="form-group">
-            <label>Paid?</label>
-            <input #paid type="checkbox" name="paid" [(ngModel)]="order.paid" />
+        <fieldset class="form-check form-switch mb-4">
+            <label class="form-check-label">Paid?</label>
+            <input class="form-check-input" type="checkbox" #paid type="checkbox" name="paid" [(ngModel)]="order.paid"
+                [ngClass]="{ 'is-valid': time.valid, 'is-invalid': orderForm.dirty && time.invalid}" />
+
+            <div class="invalid-tooltip">
+                Please enter a valid date.
+            </div>
         </fieldset>
 
-        <fieldset class="form-group">
-            <label>Target date</label>
-            <input type="datetime-local"
-                [ngModel]="order.time| date:'yyyy-MM-dd HH:mm'"
-                #time="ngModel"
-                (ngModelChange)="order.time = $event"
-                class="form-control" name="targetDate" required="required"/>
-        </fieldset>
+
+
+        <div class="input-group mb-3">
+            <div class="form-floating">
+                <input type="datetime-local" placeholder="placeholder" [ngModel]="order.time| date:'yyyy-MM-dd HH:mm'"
+                    #time="ngModel" (ngModelChange)="order.time = $event" class="form-control" name="targetDate"
+                    required="required" />
+                <label for="startTime">Start Time</label>
+            </div>
+        </div>
 
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button type="submit" class="btn btn-success">Save</button>
-            <button type="button" class="btn btn-warning" (click)="cancel()">Cancel</button>
+            <button type="submit" class="btn btn-secondary">Save</button>
+            <button type="button" class="btn btn-light" (click)="cancel()">Cancel</button>
         </div>
     </form>
 
