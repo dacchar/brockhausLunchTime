@@ -35,11 +35,7 @@ public class OrderService {
     }
 
     public void deleteOrder(long id) {
-        if(orderJpaRepository.existsById(id)) {
-            orderJpaRepository.deleteById(id);
-        } else {
-            throw new RuntimeException("Order not found with id: " + id);
-        }
+        orderJpaRepository.existsById(id);
     }
 
     public DishOrder createOrder(DishOrder dishOrder) {
