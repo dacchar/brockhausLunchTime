@@ -44,23 +44,5 @@ export class OrderListComponent implements OnInit {
         )
       }
     )
-
-
-    // this.orders = this.orderService.retrieveOrders();
-    // this.orderService.retrieveOrders().subscribe(
-    //   response => {
-    //     this.orders = response;
-    //   }
-    // )
-
-
-    // this.todoDataService.deleteTodo('dac', id).subscribe(
-    //  response => {
-    //     console.log(response);
-    //     this.errorMessage = 'Delete todo ' + id + ' successful!'
-    //     this.refreshToDos();
-    //  }
-    // )
   }
-
 }
